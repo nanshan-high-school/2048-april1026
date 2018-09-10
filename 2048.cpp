@@ -241,16 +241,38 @@ void right() {
 
 int win() {
     bool full = 1;
-    for (int x = 0; x < 4; x++) {
-        for (int y = 0; y < 4; y++) {
-            if (full == 0) {
-                break;
-            } else if (list[x][y] == 0) {
-            	full = 0;
-                break;
+    for (int next_step = 0; next_step < 4; next_step++) {
+    	copy();
+    	if (full == 0)
+    		break;
+    	switch (next_step) {
+                case 0:
+                    up();
+                    break;
+                case 1:
+                    down();
+                    break;
+                case 2:
+                    left();
+                    break;
+                case 3:
+                    right();
+                    break;
             }
-        }
-    }
+	    for (int x = 0; x < 4; x++) {
+	        for (int y = 0; y < 4; y++) {
+				if (list[x][y] == 0) {
+	            	full = 0;
+	                break;
+	            }
+	        }
+	    }
+	    for (int x = 0; x < 4; x++) {
+	        for (int y = 0; y < 4; y++) {
+	            list[x][y] = checklist[x][y];
+	        }
+	    }
+	}
     for (int x = 0; x < 4; x++) {
         for (int y = 0; y < 4; y++) {
             if (list[x][y] == 2048) {
