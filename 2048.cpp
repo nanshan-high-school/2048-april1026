@@ -279,11 +279,10 @@ int win() {
                 return 1;
             } else if (full == 1) {
                 return 0;
-            } else {
-                return 2;
             }
         }
     }
+    return 2;
 }
 
 /*void go_to_xy(int xpos, int ypos)
